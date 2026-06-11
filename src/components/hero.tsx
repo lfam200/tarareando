@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { LINK_DIAGNOSTICO } from "@/lib/config";
 
 const NOTAS = [
   { simbolo: "♪", x: "8%", y: "18%", retraso: 0, tam: "text-4xl" },
@@ -45,13 +46,13 @@ export function Hero() {
           className="max-w-2xl"
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-purple/10 px-4 py-1.5 text-sm font-bold text-brand-purple">
-            🎵 Música para niños y adolescentes
+            🎵 Músico autodidacta, no improvisado
           </span>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight text-brand-ink sm:text-5xl md:text-6xl">
-            El talento que rompe{" "}
+            Estudia música por tu cuenta, pero{" "}
             <span className="relative inline-block text-brand-purple">
-              más que barreras
+              no estudies sin rumbo
               <motion.svg
                 viewBox="0 0 220 12"
                 className="absolute -bottom-2 left-0 w-full text-brand-yellow"
@@ -72,12 +73,13 @@ export function Hero() {
                 />
               </motion.svg>
             </span>
+            .
           </h1>
 
           <p className="mt-6 text-lg text-brand-ink/70 sm:text-xl">
-            Cursos online, clases en vivo y asesorías personalizadas para que
-            tu hijo o hija descubra la música a su ritmo, con profes que viven
-            de ella.
+            En Tarareando ayudamos a músicos autodidactas y estudiantes de
+            música a ordenar su formación con asesorías, clases personalizadas,
+            recursos prácticos y contenido educativo.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -87,7 +89,13 @@ export function Hero() {
                 size="lg"
                 className="rounded-full px-8 text-base font-bold shadow-lg shadow-brand-yellow/40"
               >
-                <Link href="/cursos">Explorar cursos</Link>
+                <a
+                  href={LINK_DIAGNOSTICO}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Reserva tu diagnóstico gratuito
+                </a>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
@@ -97,7 +105,7 @@ export function Hero() {
                 variant="outline"
                 className="rounded-full border-2 border-brand-purple px-8 text-base font-bold text-brand-purple hover:bg-brand-purple hover:text-white"
               >
-                <Link href="/agenda">Agenda una asesoría</Link>
+                <Link href="/#newsletter">Únete a la newsletter</Link>
               </Button>
             </motion.div>
           </div>

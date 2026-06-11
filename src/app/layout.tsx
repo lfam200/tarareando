@@ -15,11 +15,11 @@ const baloo = Baloo_2({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tarareando — Aprende música a tu ritmo",
+    default: "Tarareando — Músico autodidacta, no improvisado",
     template: "%s | Tarareando",
   },
   description:
-    "Cursos online de música para niños y adolescentes, clases en vivo y asesorías personalizadas. El talento que rompe más que barreras.",
+    "Ayudamos a músicos autodidactas y estudiantes de música a ordenar su formación, detectar sus vacíos y construir una ruta de estudio realista para tocar, entender y crear música mejor.",
 };
 
 export default function RootLayout({

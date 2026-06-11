@@ -131,6 +131,59 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Prosa de las entradas del blog (markdown migrado de la web anterior). */
+@layer components {
+  .prose-tarareando {
+    @apply text-base leading-relaxed text-brand-ink/85;
+  }
+  .prose-tarareando h2 {
+    @apply mt-10 mb-4 text-2xl font-bold text-brand-ink;
+  }
+  .prose-tarareando h3 {
+    @apply mt-8 mb-3 text-xl font-bold text-brand-ink;
+  }
+  .prose-tarareando h4 {
+    @apply mt-6 mb-2 text-lg font-bold text-brand-ink;
+  }
+  .prose-tarareando p {
+    @apply my-4;
+  }
+  .prose-tarareando a {
+    @apply font-semibold text-brand-purple underline underline-offset-4;
+  }
+  .prose-tarareando ul {
+    @apply my-4 list-disc pl-6;
+  }
+  .prose-tarareando ol {
+    @apply my-4 list-decimal pl-6;
+  }
+  .prose-tarareando li {
+    @apply my-1.5;
+  }
+  .prose-tarareando img {
+    @apply my-6 mx-auto rounded-2xl;
+  }
+  .prose-tarareando blockquote {
+    @apply my-6 border-l-4 border-brand-yellow pl-4 italic text-brand-ink/70;
+  }
+  .prose-tarareando hr {
+    @apply my-8 border-brand-ink/10;
+  }
+  .prose-tarareando table {
+    @apply my-6 w-full border-collapse text-sm;
+  }
+  .prose-tarareando th,
+  .prose-tarareando td {
+    @apply border border-brand-ink/10 px-3 py-2 text-left;
+  }
+  .prose-tarareando th {
+    @apply bg-brand-cream font-bold;
+  }
+  .prose-tarareando strong {
+    @apply font-bold text-brand-ink;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

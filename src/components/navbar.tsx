@@ -5,10 +5,15 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
+import { LINK_DIAGNOSTICO } from "@/lib/config";
 
 const ENLACES = [
-  { href: "/cursos", etiqueta: "Cursos y recursos" },
-  { href: "/agenda", etiqueta: "Agenda tu sesión" },
+  { href: "/", etiqueta: "Inicio" },
+  { href: "/asesoria", etiqueta: "Asesoría gratuita" },
+  { href: "/clases", etiqueta: "Clases" },
+  { href: "/recursos", etiqueta: "Recursos" },
+  { href: "/blog", etiqueta: "Blog" },
+  { href: "/sobre-tarareando", etiqueta: "Sobre Tarareando" },
 ];
 
 export function Navbar() {
@@ -16,10 +21,10 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-ink/5 bg-white/85 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo />
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-5 lg:flex">
           {ENLACES.map((e) => (
             <Link
               key={e.href}
@@ -30,13 +35,19 @@ export function Navbar() {
             </Link>
           ))}
           <Button asChild className="rounded-full font-bold">
-            <Link href="/cursos">Empieza hoy</Link>
+            <a
+              href={LINK_DIAGNOSTICO}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reserva tu diagnóstico gratuito
+            </a>
           </Button>
         </div>
 
         <button
           type="button"
-          className="md:hidden p-2 text-brand-ink"
+          className="lg:hidden p-2 text-brand-ink"
           aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={abierto}
           onClick={() => setAbierto((v) => !v)}
@@ -66,7 +77,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-t border-brand-ink/5 bg-white md:hidden"
+            className="overflow-hidden border-t border-brand-ink/5 bg-white lg:hidden"
           >
             <div className="flex flex-col gap-1 px-4 py-3">
               {ENLACES.map((e) => (
@@ -80,9 +91,14 @@ export function Navbar() {
                 </Link>
               ))}
               <Button asChild className="mt-2 rounded-full font-bold">
-                <Link href="/cursos" onClick={() => setAbierto(false)}>
-                  Empieza hoy
-                </Link>
+                <a
+                  href={LINK_DIAGNOSTICO}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setAbierto(false)}
+                >
+                  Reserva tu diagnóstico gratuito
+                </a>
               </Button>
             </div>
           </motion.div>

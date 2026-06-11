@@ -3,9 +3,19 @@
 
 export const NEGOCIO = {
   nombre: "Tarareando",
-  eslogan: "El talento que rompe más que barreras",
+  eslogan: "Músico autodidacta, no improvisado",
   email: "cristhianlopez@tarareando.pe",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NEGOCIO ?? "51959833147",
+} as const;
+
+// Reserva directa del diagnóstico gratuito (Google Calendar).
+// El usuario hace clic y reserva en los horarios disponibles, sin formularios.
+export const LINK_DIAGNOSTICO = "https://calendar.app.google/WiZtYtrJ2p9sFNUy5";
+
+export const REDES = {
+  youtube: "https://www.youtube.com/@Tarareando",
+  facebook: "https://www.facebook.com/tarareando.pe",
+  tiktok: "https://www.tiktok.com/@tarareando.pe",
 } as const;
 
 export const INSTRUCCIONES_PAGO = {

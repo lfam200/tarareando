@@ -11,6 +11,14 @@ import {
 
 const ESTADO_INICIAL: EstadoFormulario = { ok: false, mensaje: "" };
 
+const NIVELES = [
+  "Autodidacta empezando",
+  "Autodidacta con experiencia",
+  "Estudiante de música",
+  "Músico por hobby",
+  "Compositor / creador",
+];
+
 export function Newsletter() {
   const [estado, accion, pendiente] = useActionState(
     suscribirNewsletter,
@@ -18,18 +26,23 @@ export function Newsletter() {
   );
 
   return (
-    <section className="relative overflow-hidden bg-brand-purple">
+    <section id="newsletter" className="relative overflow-hidden bg-brand-purple scroll-mt-20">
       <div
         aria-hidden
         className="absolute -right-16 -top-16 size-64 rounded-full bg-brand-yellow/20 blur-3xl"
       />
       <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
-        <h2 className="text-3xl font-bold text-white sm:text-4xl">
-          No te pierdas ningún acorde 🎶
+        <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-white">
+          ✉️ Cartas para músicos autodidactas
+        </span>
+        <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
+          Recibe ideas y recursos para ordenar tu estudio musical
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-white/80">
-          Suscríbete y entérate primero de nuevos cursos, talleres y
-          promociones para tu familia.
+          Consejos, ejercicios, rutas de estudio y recursos prácticos para
+          dejar de estudiar música al azar. Creados desde la experiencia de
+          Tarareando acompañando y capacitando a más de 1000 músicos
+          independientes.
         </p>
 
         {estado.ok ? (
@@ -43,7 +56,7 @@ export function Newsletter() {
         ) : (
           <form
             action={accion}
-            className="mx-auto mt-8 flex max-w-xl flex-col gap-3 sm:flex-row"
+            className="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2"
           >
             <Input
               name="nombre"
@@ -58,12 +71,25 @@ export function Newsletter() {
               required
               className="h-12 rounded-full border-0 bg-white px-5"
             />
+            <select
+              name="nivel"
+              defaultValue=""
+              aria-label="Nivel o interés musical (opcional)"
+              className="h-12 w-full appearance-none rounded-full border-0 bg-white px-5 text-sm text-brand-ink/80 sm:col-span-2"
+            >
+              <option value="">Nivel o interés musical (opcional)</option>
+              {NIVELES.map((nivel) => (
+                <option key={nivel} value={nivel}>
+                  {nivel}
+                </option>
+              ))}
+            </select>
             <Button
               type="submit"
               disabled={pendiente}
-              className="h-12 rounded-full px-8 font-bold"
+              className="h-12 rounded-full px-8 font-bold sm:col-span-2"
             >
-              {pendiente ? "Enviando…" : "Suscribirme"}
+              {pendiente ? "Enviando…" : "Quiero recibir recursos"}
             </Button>
           </form>
         )}

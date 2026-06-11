@@ -30,11 +30,12 @@ async function upsertCliente(datos: {
   email: string;
   telefono?: string;
   suscribirNewsletter?: boolean;
+  notas?: string;
 }): Promise<string> {
   const supabase = createAdminClient();
   const { data: existente } = await supabase
     .from("clientes")
-    .select("id, telefono, suscrito_newsletter")
+    .select("id, telefono, suscrito_newsletter, notas")
     .eq("email", datos.email)
     .maybeSingle();
 
@@ -46,6 +47,7 @@ async function upsertCliente(datos: {
         telefono: datos.telefono || existente.telefono,
         suscrito_newsletter:
           existente.suscrito_newsletter || Boolean(datos.suscribirNewsletter),
+        notas: existente.notas || datos.notas || null,
       })
       .eq("id", existente.id);
     return existente.id;
@@ -59,6 +61,7 @@ async function upsertCliente(datos: {
       email: datos.email,
       telefono: datos.telefono || null,
       suscrito_newsletter: Boolean(datos.suscribirNewsletter),
+      notas: datos.notas || null,
       ...fuente,
     })
     .select("id")
@@ -118,22 +121,32 @@ export async function crearPedido(formData: FormData) {
   redirect(`/gracias/${pedido.id}`);
 }
 
-// --- Newsletter: captura de leads de la home.
+// --- Newsletter "Cartas para músicos autodidactas": captura de leads.
+// Hoy los suscriptores se guardan en la tabla `clientes` de Supabase
+// (suscrito_newsletter = true). Cuando exista una herramienta de email
+// marketing (p. ej. una audiencia de Resend), conectar el alta aquí.
 export async function suscribirNewsletter(
   _estado: EstadoFormulario,
   formData: FormData,
 ): Promise<EstadoFormulario> {
   const nombre = limpiar(formData.get("nombre"));
   const email = limpiar(formData.get("email")).toLowerCase();
+  const nivel = limpiar(formData.get("nivel"));
   if (!nombre || !emailValido(email)) {
     return { ok: false, mensaje: "Escribe tu nombre y un correo válido." };
   }
   if (!MODO_DEMO) {
-    await upsertCliente({ nombre, email, suscribirNewsletter: true });
+    await upsertCliente({
+      nombre,
+      email,
+      suscribirNewsletter: true,
+      notas: nivel ? `Nivel/interés (newsletter): ${nivel}` : undefined,
+    });
   }
   return {
     ok: true,
-    mensaje: "¡Listo! Te avisaremos de nuevos cursos y promociones. 🎵",
+    mensaje:
+      "¡Listo! Pronto recibirás las Cartas para músicos autodidactas. 🎵",
   };
 }
 

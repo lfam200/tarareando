@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { NEGOCIO, linkWhatsApp } from "@/lib/config";
+import { LINK_DIAGNOSTICO, NEGOCIO, REDES, linkWhatsApp } from "@/lib/config";
+
+const EXPLORA = [
+  { href: "/asesoria", etiqueta: "Asesoría gratuita" },
+  { href: "/clases", etiqueta: "Clases personalizadas" },
+  { href: "/recursos", etiqueta: "Recursos" },
+  { href: "/blog", etiqueta: "Blog" },
+  { href: "/sobre-tarareando", etiqueta: "Sobre Tarareando" },
+  { href: "/contacto", etiqueta: "Contacto" },
+];
 
 export function Footer() {
   return (
@@ -11,21 +20,33 @@ export function Footer() {
             <Logo />
           </div>
           <p className="text-sm text-white/70 max-w-xs">
-            {NEGOCIO.eslogan}. Cursos online de música para niños y
-            adolescentes, clases en vivo y asesorías personalizadas.
+            {NEGOCIO.eslogan}. Acompañamos a músicos autodidactas y
+            estudiantes de música a ordenar su formación con asesorías,
+            clases personalizadas y recursos prácticos.
           </p>
+          <a
+            href={LINK_DIAGNOSTICO}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full bg-brand-yellow px-5 py-2 text-sm font-bold text-brand-ink"
+          >
+            Reserva tu diagnóstico gratuito
+          </a>
         </div>
 
         <div className="space-y-2 text-sm">
           <p className="font-heading text-base font-bold text-brand-yellow">
             Explora
           </p>
-          <Link href="/cursos" className="block text-white/80 hover:text-white">
-            Cursos y recursos
-          </Link>
-          <Link href="/agenda" className="block text-white/80 hover:text-white">
-            Agenda tu sesión
-          </Link>
+          {EXPLORA.map((e) => (
+            <Link
+              key={e.href}
+              href={e.href}
+              className="block text-white/80 hover:text-white"
+            >
+              {e.etiqueta}
+            </Link>
+          ))}
         </div>
 
         <div className="space-y-2 text-sm">
@@ -45,6 +66,30 @@ export function Footer() {
             className="block text-white/80 hover:text-white"
           >
             {NEGOCIO.email}
+          </a>
+          <a
+            href={REDES.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-white/80 hover:text-white"
+          >
+            YouTube
+          </a>
+          <a
+            href={REDES.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-white/80 hover:text-white"
+          >
+            Facebook
+          </a>
+          <a
+            href={REDES.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-white/80 hover:text-white"
+          >
+            TikTok
           </a>
         </div>
       </div>
