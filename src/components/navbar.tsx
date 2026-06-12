@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO } from "@/lib/config";
+import { RUTA_RESERVA } from "@/lib/config";
 
 const ENLACES = [
   { href: "/", etiqueta: "Inicio" },
@@ -35,13 +35,7 @@ export function Navbar() {
             </Link>
           ))}
           <Button asChild className="rounded-full font-bold">
-            <a
-              href={LINK_DIAGNOSTICO}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Reserva tu diagnóstico gratuito
-            </a>
+            <Link href={RUTA_RESERVA}>Reserva tu diagnóstico gratuito</Link>
           </Button>
         </div>
 
@@ -91,14 +85,9 @@ export function Navbar() {
                 </Link>
               ))}
               <Button asChild className="mt-2 rounded-full font-bold">
-                <a
-                  href={LINK_DIAGNOSTICO}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setAbierto(false)}
-                >
+                <Link href={RUTA_RESERVA} onClick={() => setAbierto(false)}>
                   Reserva tu diagnóstico gratuito
-                </a>
+                </Link>
               </Button>
             </div>
           </motion.div>

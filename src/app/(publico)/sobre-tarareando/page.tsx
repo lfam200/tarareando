@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO, REDES } from "@/lib/config";
+import Link from "next/link";
+import { REDES, RUTA_RESERVA } from "@/lib/config";
 import { RECONOCIMIENTOS } from "@/lib/contenido";
 
 export const metadata: Metadata = {
@@ -120,13 +121,9 @@ export default function PaginaSobre() {
               size="lg"
               className="rounded-full px-8 text-base font-bold"
             >
-              <a
-                href={LINK_DIAGNOSTICO}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={RUTA_RESERVA}>
                 Reserva tu diagnóstico gratuito
-              </a>
+              </Link>
             </Button>
             <a
               href={REDES.youtube}

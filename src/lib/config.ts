@@ -12,6 +12,15 @@ export const NEGOCIO = {
 // El usuario hace clic y reserva en los horarios disponibles, sin formularios.
 export const LINK_DIAGNOSTICO = "https://calendar.app.google/WiZtYtrJ2p9sFNUy5";
 
+// Versión embebible del mismo calendario de citas (`?gv=true` permite el
+// iframe). La reserva ocurre dentro de la web, en /asesoria.
+export const LINK_DIAGNOSTICO_EMBED =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Bl79waGei1FwrYRKrjMYcyse_CkJhmvlaWZsITmHyDba3_jeA1kSN7LT2AYn-WcZqHBF-gMk7?gv=true";
+
+// Destino interno de los CTAs de reserva: la página de asesoría con el
+// calendario embebido.
+export const RUTA_RESERVA = "/asesoria#reservar";
+
 export const REDES = {
   youtube: "https://www.youtube.com/@Tarareando",
   facebook: "https://www.facebook.com/tarareando.pe",

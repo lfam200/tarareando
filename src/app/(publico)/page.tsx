@@ -8,7 +8,7 @@ import {
   RevelarItem,
 } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO } from "@/lib/config";
+import { RUTA_RESERVA } from "@/lib/config";
 import {
   AREAS,
   FORMATOS_CLASES,
@@ -91,13 +91,9 @@ export default async function Home() {
                 size="lg"
                 className="rounded-full px-10 text-base font-bold"
               >
-                <a
-                  href={LINK_DIAGNOSTICO}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={RUTA_RESERVA}>
                   Reservar diagnóstico gratuito
-                </a>
+                </Link>
               </Button>
               <Link
                 href="/asesoria"
@@ -447,13 +443,9 @@ export default async function Home() {
             size="lg"
             className="mt-8 rounded-full px-10 text-base font-bold"
           >
-            <a
-              href={LINK_DIAGNOSTICO}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href={RUTA_RESERVA}>
               Reserva tu diagnóstico gratuito
-            </a>
+            </Link>
           </Button>
         </Revelar>
       </section>

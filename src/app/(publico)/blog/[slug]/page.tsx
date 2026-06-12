@@ -5,7 +5,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Revelar } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO } from "@/lib/config";
+import { RUTA_RESERVA } from "@/lib/config";
 import { formatoFecha, getEntradaPorSlug, getEntradas } from "@/lib/blog";
 
 interface Props {
@@ -71,9 +71,7 @@ export default async function PaginaEntrada({ params }: Props) {
           primero según tus objetivos.
         </p>
         <Button asChild size="lg" className="mt-6 rounded-full px-8 font-bold">
-          <a href={LINK_DIAGNOSTICO} target="_blank" rel="noopener noreferrer">
-            Reserva tu diagnóstico gratuito
-          </a>
+          <Link href={RUTA_RESERVA}>Reserva tu diagnóstico gratuito</Link>
         </Button>
       </div>
     </article>

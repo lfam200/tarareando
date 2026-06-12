@@ -8,7 +8,8 @@ import {
 } from "lucide-react";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO, NEGOCIO, REDES, linkWhatsApp } from "@/lib/config";
+import Link from "next/link";
+import { NEGOCIO, REDES, RUTA_RESERVA, linkWhatsApp } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -106,13 +107,9 @@ export default function PaginaContacto() {
             size="lg"
             className="mt-7 rounded-full px-10 text-base font-bold"
           >
-            <a
-              href={LINK_DIAGNOSTICO}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href={RUTA_RESERVA}>
               Reserva tu diagnóstico gratuito
-            </a>
+            </Link>
           </Button>
         </div>
       </Revelar>

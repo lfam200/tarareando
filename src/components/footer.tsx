@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { LINK_DIAGNOSTICO, NEGOCIO, REDES, linkWhatsApp } from "@/lib/config";
+import { NEGOCIO, REDES, RUTA_RESERVA, linkWhatsApp } from "@/lib/config";
 
 const EXPLORA = [
   { href: "/asesoria", etiqueta: "Asesoría gratuita" },
@@ -24,14 +24,12 @@ export function Footer() {
             estudiantes de música a ordenar su formación con asesorías,
             clases personalizadas y recursos prácticos.
           </p>
-          <a
-            href={LINK_DIAGNOSTICO}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={RUTA_RESERVA}
             className="inline-block rounded-full bg-brand-yellow px-5 py-2 text-sm font-bold text-brand-ink"
           >
             Reserva tu diagnóstico gratuito
-          </a>
+          </Link>
         </div>
 
         <div className="space-y-2 text-sm">

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
+import { CalendarioDiagnostico } from "@/components/calendario-diagnostico";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO } from "@/lib/config";
 import { ASESORIA_REVISA } from "@/lib/contenido";
 
 export const metadata: Metadata = {
   title: "Asesoría gratuita",
   description:
-    "Diagnóstico gratuito para músicos autodidactas: revisamos dónde estás, qué estás estudiando y qué ordenar primero para avanzar con claridad.",
+    "Diagnóstico gratuito para músicos autodidactas: revisamos dónde estás, qué estás estudiando y qué ordenar primero para avanzar con claridad. Reserva directamente en el calendario.",
 };
 
 export default function PaginaAsesoria() {
@@ -30,9 +30,7 @@ export default function PaginaAsesoria() {
           size="lg"
           className="mt-8 rounded-full px-10 text-base font-bold"
         >
-          <a href={LINK_DIAGNOSTICO} target="_blank" rel="noopener noreferrer">
-            Reservar mi diagnóstico gratuito
-          </a>
+          <a href="#reservar">Reservar mi diagnóstico gratuito</a>
         </Button>
         <p className="mt-3 text-sm text-muted-foreground">
           Elige directamente el horario que te acomode en el calendario y tu
@@ -60,24 +58,15 @@ export default function PaginaAsesoria() {
       </RevelarGrupo>
 
       <Revelar className="mt-14">
-        <div className="rounded-3xl bg-brand-ink px-6 py-12 text-center sm:px-10">
-          <p className="mx-auto max-w-xl text-lg text-white/85">
-            No necesitas tener todo claro antes de empezar. La idea de esta
-            sesión es justamente ayudarte a ordenar el camino.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-7 rounded-full px-10 text-base font-bold"
-          >
-            <a
-              href={LINK_DIAGNOSTICO}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Reservar mi diagnóstico gratuito
-            </a>
-          </Button>
+        <h2 className="text-center text-2xl font-bold sm:text-3xl">
+          Elige tu horario
+        </h2>
+        <p className="mx-auto mt-2 max-w-xl text-center text-muted-foreground">
+          No necesitas tener todo claro antes de empezar. La idea de esta
+          sesión es justamente ayudarte a ordenar el camino.
+        </p>
+        <div className="mt-8">
+          <CalendarioDiagnostico />
         </div>
       </Revelar>
     </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { GraduationCap, Landmark, MonitorPlay, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LINK_DIAGNOSTICO } from "@/lib/config";
+import { RUTA_RESERVA } from "@/lib/config";
 
 const PRUEBA_SOCIAL = [
   {
@@ -103,13 +103,9 @@ export function Hero() {
                 size="lg"
                 className="rounded-full px-8 text-base font-bold shadow-lg shadow-brand-yellow/40"
               >
-                <a
-                  href={LINK_DIAGNOSTICO}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={RUTA_RESERVA}>
                   Reserva tu diagnóstico gratuito
-                </a>
+                </Link>
               </Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
