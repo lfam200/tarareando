@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import {
+  Clapperboard,
+  Mail,
+  MessageCircle,
+  MonitorPlay,
+  Users,
+} from "lucide-react";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
 import { LINK_DIAGNOSTICO, NEGOCIO, REDES, linkWhatsApp } from "@/lib/config";
@@ -11,35 +18,35 @@ export const metadata: Metadata = {
 
 const CANALES = [
   {
-    icono: "📧",
+    icono: Mail,
     titulo: "Correo",
     detalle: NEGOCIO.email,
     href: `mailto:${NEGOCIO.email}`,
     externo: false,
   },
   {
-    icono: "💬",
+    icono: MessageCircle,
     titulo: "WhatsApp",
     detalle: "Respuesta directa para tus consultas",
     href: linkWhatsApp("Hola Tarareando, quiero más información 🎵"),
     externo: true,
   },
   {
-    icono: "▶️",
+    icono: MonitorPlay,
     titulo: "YouTube",
     detalle: "@Tarareando — contenido educativo gratuito",
     href: REDES.youtube,
     externo: true,
   },
   {
-    icono: "👥",
+    icono: Users,
     titulo: "Facebook",
     detalle: "tarareando.pe",
     href: REDES.facebook,
     externo: true,
   },
   {
-    icono: "🎬",
+    icono: Clapperboard,
     titulo: "TikTok",
     detalle: "@tarareando.pe",
     href: REDES.tiktok,
@@ -68,8 +75,11 @@ export default function PaginaContacto() {
                 : {})}
               className="flex h-full items-start gap-4 rounded-3xl border border-brand-ink/10 bg-white p-6 transition-colors hover:border-brand-purple/40 hover:bg-brand-cream/50"
             >
-              <span className="text-3xl" aria-hidden>
-                {canal.icono}
+              <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-brand-purple/10">
+                <canal.icono
+                  className="size-5 text-brand-purple"
+                  aria-hidden
+                />
               </span>
               <span>
                 <span className="block text-lg font-bold">{canal.titulo}</span>

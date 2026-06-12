@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Music } from "lucide-react";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
 import { formatoFecha, getEntradas } from "@/lib/blog";
 
@@ -17,7 +18,8 @@ export default async function PaginaBlog() {
       <Revelar>
         <h1 className="text-4xl font-bold sm:text-5xl">Blog</h1>
         <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
-          Artículos para entender mejor la música y estudiar con más orden.
+          Ideas, guías y explicaciones para entender mejor la música y
+          ordenar tu estudio.
         </p>
       </Revelar>
 
@@ -25,7 +27,7 @@ export default async function PaginaBlog() {
         <Revelar className="mt-12">
           <div className="rounded-3xl bg-brand-cream p-10 text-center">
             <p className="text-lg font-semibold">
-              Estamos migrando las entradas del blog. ¡Vuelve pronto! 🎵
+              Estamos migrando las entradas del blog. ¡Vuelve pronto!
             </p>
           </div>
         </Revelar>
@@ -45,8 +47,11 @@ export default async function PaginaBlog() {
                     className="aspect-[16/9] w-full object-cover"
                   />
                 ) : (
-                  <div className="grid aspect-[16/9] w-full place-items-center bg-brand-purple/10 text-4xl">
-                    🎵
+                  <div className="grid aspect-[16/9] w-full place-items-center bg-brand-purple/10">
+                    <Music
+                      className="size-10 text-brand-purple/50"
+                      aria-hidden
+                    />
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
@@ -59,8 +64,9 @@ export default async function PaginaBlog() {
                   <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
                     {entrada.extracto}
                   </p>
-                  <span className="mt-auto pt-4 text-sm font-bold text-brand-purple">
-                    Leer más →
+                  <span className="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-purple">
+                    Leer más
+                    <ArrowRight className="size-4" aria-hidden />
                   </span>
                 </div>
               </Link>

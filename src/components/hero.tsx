@@ -2,8 +2,21 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { GraduationCap, Landmark, MonitorPlay, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LINK_DIAGNOSTICO } from "@/lib/config";
+
+const PRUEBA_SOCIAL = [
+  {
+    icono: GraduationCap,
+    texto: "Más de 1000 músicos independientes capacitados",
+  },
+  {
+    icono: Landmark,
+    texto: "Proyecto financiado por el Ministerio de Cultura",
+  },
+  { icono: MonitorPlay, texto: "Comunidad nacida en YouTube" },
+];
 
 const NOTAS = [
   { simbolo: "♪", x: "8%", y: "18%", retraso: 0, tam: "text-4xl" },
@@ -46,7 +59,8 @@ export function Hero() {
           className="max-w-2xl"
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-purple/10 px-4 py-1.5 text-sm font-bold text-brand-purple">
-            🎵 Músico autodidacta, no improvisado
+            <Music className="size-4" aria-hidden />
+            Músico autodidacta, no improvisado
           </span>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight text-brand-ink sm:text-5xl md:text-6xl">
@@ -109,6 +123,19 @@ export function Hero() {
               </Button>
             </motion.div>
           </div>
+
+          {/* Línea de autoridad visible en el primer pantallazo */}
+          <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {PRUEBA_SOCIAL.map((p) => (
+              <li
+                key={p.texto}
+                className="flex items-center gap-2 text-sm font-semibold text-brand-ink/60"
+              >
+                <p.icono className="size-4 text-brand-purple" aria-hidden />
+                {p.texto}
+              </li>
+            ))}
+          </ul>
         </motion.div>
       </div>
     </section>

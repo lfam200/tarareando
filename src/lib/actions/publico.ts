@@ -121,10 +121,12 @@ export async function crearPedido(formData: FormData) {
   redirect(`/gracias/${pedido.id}`);
 }
 
-// --- Newsletter "Cartas para músicos autodidactas": captura de leads.
-// Hoy los suscriptores se guardan en la tabla `clientes` de Supabase
-// (suscrito_newsletter = true). Cuando exista una herramienta de email
-// marketing (p. ej. una audiencia de Resend), conectar el alta aquí.
+// --- Newsletter "Cartas para músicos autodidactas": captura de leads vía
+// lead magnet (guía gratuita). Hoy los suscriptores se guardan en la tabla
+// `clientes` de Supabase (suscrito_newsletter = true) y se notifica al
+// negocio para enviar la guía manualmente. Cuando exista una herramienta de
+// email marketing (p. ej. una audiencia de Resend con autoresponder),
+// conectar aquí el alta y el envío automático de la guía.
 export async function suscribirNewsletter(
   _estado: EstadoFormulario,
   formData: FormData,
@@ -142,11 +144,16 @@ export async function suscribirNewsletter(
       suscribirNewsletter: true,
       notas: nivel ? `Nivel/interés (newsletter): ${nivel}` : undefined,
     });
+    await notificarNegocio(
+      "Nuevo suscriptor pidió la guía gratuita",
+      `<p><strong>${nombre}</strong> (${email}${nivel ? `, ${nivel}` : ""})
+       descargó la guía y se unió a la newsletter.</p>
+       <p>Envíale la guía: "Cómo ordenar tu estudio musical si eres autodidacta".</p>`,
+    );
   }
   return {
     ok: true,
-    mensaje:
-      "¡Listo! Pronto recibirás las Cartas para músicos autodidactas. 🎵",
+    mensaje: "¡Listo! Te enviaremos la guía a tu correo.",
   };
 }
 

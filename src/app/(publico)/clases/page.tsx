@@ -43,8 +43,10 @@ export default function PaginaClases() {
       <Revelar className="mt-14">
         <h2 className="text-2xl font-bold">Formatos</h2>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Los detalles de cada plan se definen contigo después del diagnóstico
-          gratuito, según tu nivel, tus objetivos y tu tiempo disponible.
+          El camino es: diagnóstico gratuito → recomendación de ruta → clases
+          o acompañamiento personalizado. Después del diagnóstico, si tiene
+          sentido trabajar juntos, te proponemos una ruta de clases o
+          acompañamiento según tu objetivo, nivel y tiempo disponible.
         </p>
       </Revelar>
       <RevelarGrupo className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

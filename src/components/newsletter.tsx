@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { motion } from "motion/react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,6 +20,8 @@ const NIVELES = [
   "Compositor / creador",
 ];
 
+// Lead magnet de la newsletter "Cartas para músicos autodidactas":
+// la descarga de la guía suscribe a la persona a la newsletter.
 export function Newsletter() {
   const [estado, accion, pendiente] = useActionState(
     suscribirNewsletter,
@@ -26,23 +29,26 @@ export function Newsletter() {
   );
 
   return (
-    <section id="newsletter" className="relative overflow-hidden bg-brand-purple scroll-mt-20">
+    <section
+      id="newsletter"
+      className="relative overflow-hidden bg-brand-purple scroll-mt-20"
+    >
       <div
         aria-hidden
         className="absolute -right-16 -top-16 size-64 rounded-full bg-brand-yellow/20 blur-3xl"
       />
       <div className="relative mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
-        <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-white">
-          ✉️ Cartas para músicos autodidactas
+        <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-bold text-white">
+          <Mail className="size-4" aria-hidden />
+          Guía gratuita
         </span>
         <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
-          Recibe ideas y recursos para ordenar tu estudio musical
+          Cómo ordenar tu estudio musical si eres autodidacta
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-white/80">
-          Consejos, ejercicios, rutas de estudio y recursos prácticos para
-          dejar de estudiar música al azar. Creados desde la experiencia de
-          Tarareando acompañando y capacitando a más de 1000 músicos
-          independientes.
+          Recibe una guía práctica para detectar qué estás estudiando, qué te
+          falta ordenar y cómo armar una ruta de práctica más clara según tu
+          nivel.
         </p>
 
         {estado.ok ? (
@@ -89,7 +95,7 @@ export function Newsletter() {
               disabled={pendiente}
               className="h-12 rounded-full px-8 font-bold sm:col-span-2"
             >
-              {pendiente ? "Enviando…" : "Quiero recibir recursos"}
+              {pendiente ? "Enviando…" : "Descargar la guía gratuita"}
             </Button>
           </form>
         )}
@@ -98,6 +104,12 @@ export function Newsletter() {
             {estado.mensaje}
           </p>
         ) : null}
+
+        <p className="mt-6 text-sm text-white/70">
+          Creada desde la experiencia de Tarareando acompañando y capacitando
+          a más de 1000 músicos independientes. Al descargarla te unes a
+          “Cartas para músicos autodidactas”, nuestra newsletter educativa.
+        </p>
       </div>
     </section>
   );

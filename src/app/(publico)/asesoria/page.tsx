@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 import { Revelar, RevelarGrupo, RevelarItem } from "@/components/animacion";
 import { Button } from "@/components/ui/button";
 import { LINK_DIAGNOSTICO } from "@/lib/config";
@@ -47,10 +48,10 @@ export default function PaginaAsesoria() {
           <RevelarItem key={punto}>
             <div className="flex items-start gap-3 rounded-2xl bg-brand-cream p-5">
               <span
-                className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-yellow text-sm font-bold text-brand-ink"
+                className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-yellow"
                 aria-hidden
               >
-                ✓
+                <Check className="size-4 text-brand-ink" strokeWidth={3} />
               </span>
               <p className="font-semibold text-brand-ink/85">{punto}</p>
             </div>

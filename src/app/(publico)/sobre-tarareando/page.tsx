@@ -12,19 +12,19 @@ export const metadata: Metadata = {
 
 const HITOS = [
   {
-    titulo: "Nace en YouTube",
+    titulo: "Nace en Trujillo, en YouTube",
     detalle:
-      "Tarareando nació como un proyecto de educación musical para explicar la música de forma clara, cercana y práctica, empezando por videos de teoría musical para quienes no podían acceder a una formación formal.",
+      "Tarareando nació en Trujillo como un proyecto de educación musical para explicar la música de forma clara, cercana y práctica, empezando por videos de teoría musical para quienes no podían acceder a una formación formal.",
   },
   {
     titulo: "Crece como comunidad",
     detalle:
-      "Lo que empezó como contenido educativo fue creciendo hasta convertirse en un espacio de formación, acompañamiento y comunidad para músicos independientes, con talleres, asesorías y actividades junto a instituciones aliadas.",
+      "Con el tiempo, el proyecto creció como canal, comunidad y espacio de formación, acompañando a músicos independientes que buscan entender mejor lo que hacen y avanzar con más orden, con talleres, asesorías y actividades junto a instituciones aliadas.",
   },
   {
-    titulo: "Su enfoque hoy",
+    titulo: "Hoy, desde Cajabamba",
     detalle:
-      "Hoy Tarareando trabaja con músicos autodidactas y estudiantes que quieren ordenar su aprendizaje, entender mejor la música y avanzar con una ruta más clara, a través de diagnósticos, clases personalizadas y recursos prácticos.",
+      "Actualmente, desde Cajabamba, Tarareando continúa desarrollando recursos, asesorías y espacios de formación para músicos autodidactas y estudiantes de música que quieren construir una ruta de aprendizaje más clara y realista.",
   },
 ];
 
@@ -69,11 +69,12 @@ export default function PaginaSobre() {
       <Revelar className="mt-14">
         <h2 className="text-2xl font-bold">Quién está detrás del proyecto</h2>
         <p className="mt-3 text-muted-foreground">
-          Tarareando es dirigido por Cristhian López, músico y educador, junto
-          a un equipo de profesionales que viven de la música. El proyecto
-          nació en Trujillo, Perú, con la convicción de que la educación
-          musical de calidad no debería depender de dónde vives ni de haber
-          pasado por un conservatorio.
+          Tarareando es dirigido por Cristhian López, músico y educador
+          cajabambino, junto a un equipo de profesionales que viven de la
+          música. El proyecto nació en Trujillo, Perú, y hoy se desarrolla
+          desde Cajabamba, con la convicción de que la educación musical de
+          calidad no debería depender de dónde vives ni de haber pasado por
+          un conservatorio.
         </p>
         <p className="mt-3 text-muted-foreground">
           Desde sus inicios, Tarareando ha apostado por descentralizar la
@@ -91,10 +92,12 @@ export default function PaginaSobre() {
         {RECONOCIMIENTOS.map((r) => (
           <RevelarItem key={r.texto}>
             <div className="flex h-full items-start gap-3 rounded-2xl border border-brand-ink/10 bg-white p-5">
-              <span className="text-2xl" aria-hidden>
-                {r.icono}
+              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-purple/10">
+                <r.icono className="size-5 text-brand-purple" aria-hidden />
               </span>
-              <p className="font-semibold text-brand-ink/85">{r.texto}</p>
+              <p className="pt-1.5 font-semibold text-brand-ink/85">
+                {r.texto}
+              </p>
             </div>
           </RevelarItem>
         ))}

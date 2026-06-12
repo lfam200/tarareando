@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight, Music } from "lucide-react";
 import { Hero } from "@/components/hero";
 import { Newsletter } from "@/components/newsletter";
 import {
@@ -18,6 +19,12 @@ import {
 import { formatoFecha, getEntradas } from "@/lib/blog";
 
 export const revalidate = 60;
+
+const FLUJO_CLASES = [
+  "Diagnóstico gratuito",
+  "Recomendación de ruta",
+  "Clases o acompañamiento personalizado",
+];
 
 export default async function Home() {
   const entradas = (await getEntradas()).slice(0, 3);
@@ -51,43 +58,9 @@ export default async function Home() {
         </Revelar>
       </section>
 
-      {/* Método Tarareando */}
-      <section className="bg-brand-cream">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-          <Revelar>
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Ordena tu formación musical por áreas
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                No todos los músicos necesitan estudiar lo mismo al mismo
-                tiempo. Por eso, en Tarareando partimos de tu nivel, tus
-                objetivos y tus hábitos de estudio para ayudarte a construir
-                una ruta más clara, siempre desde un enfoque práctico y
-                realista.
-              </p>
-            </div>
-          </Revelar>
-          <RevelarGrupo className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {AREAS.map((area) => (
-              <RevelarItem key={area.titulo}>
-                <div className="h-full rounded-3xl bg-white p-6 shadow-sm">
-                  <span className="text-3xl" aria-hidden>
-                    {area.icono}
-                  </span>
-                  <h3 className="mt-3 text-lg font-bold">{area.titulo}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground">
-                    {area.detalle}
-                  </p>
-                </div>
-              </RevelarItem>
-            ))}
-          </RevelarGrupo>
-        </div>
-      </section>
-
-      {/* Asesoría gratuita */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+      {/* Diagnóstico gratuito: el usuario se identifica con el problema y
+          de inmediato puede reservar. */}
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-20">
         <Revelar>
           <div className="relative overflow-hidden rounded-3xl bg-brand-ink px-6 py-14 text-center sm:px-12">
             <div
@@ -137,8 +110,47 @@ export default async function Home() {
         </Revelar>
       </section>
 
+      <Newsletter />
+
+      {/* Método Tarareando */}
+      <section className="bg-brand-cream">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+          <Revelar>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold sm:text-4xl">
+                El mapa que usamos para ordenar tu formación musical
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                No se trata de estudiar todo al mismo tiempo, sino de saber
+                qué área necesita atención primero. Partimos de tu nivel, tus
+                objetivos y tus hábitos de estudio para construir una ruta más
+                clara, siempre desde un enfoque práctico y realista.
+              </p>
+            </div>
+          </Revelar>
+          <RevelarGrupo className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {AREAS.map((area) => (
+              <RevelarItem key={area.titulo}>
+                <div className="h-full rounded-3xl bg-white p-6 shadow-sm">
+                  <span className="grid size-11 place-items-center rounded-2xl bg-brand-purple/10">
+                    <area.icono
+                      className="size-5 text-brand-purple"
+                      aria-hidden
+                    />
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold">{area.titulo}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {area.detalle}
+                  </p>
+                </div>
+              </RevelarItem>
+            ))}
+          </RevelarGrupo>
+        </div>
+      </section>
+
       {/* Clases personalizadas */}
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-20">
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
         <Revelar>
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold sm:text-4xl">
@@ -154,6 +166,31 @@ export default async function Home() {
             </p>
           </div>
         </Revelar>
+
+        {/* Flujo: las clases son la continuación natural del diagnóstico */}
+        <Revelar className="mt-10">
+          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-3">
+            {FLUJO_CLASES.map((paso, i) => (
+              <span key={paso} className="flex items-center gap-3">
+                <span className="rounded-full bg-brand-purple/10 px-5 py-2.5 text-sm font-bold text-brand-purple">
+                  {paso}
+                </span>
+                {i < FLUJO_CLASES.length - 1 && (
+                  <ArrowRight
+                    className="size-4 text-brand-ink/40"
+                    aria-hidden
+                  />
+                )}
+              </span>
+            ))}
+          </div>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm text-muted-foreground">
+            Después del diagnóstico, si tiene sentido trabajar juntos, te
+            proponemos una ruta de clases o acompañamiento según tu objetivo,
+            nivel y tiempo disponible.
+          </p>
+        </Revelar>
+
         <RevelarGrupo className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {FORMATOS_CLASES.map((formato) => (
             <RevelarItem key={formato.titulo}>
@@ -167,8 +204,6 @@ export default async function Home() {
           ))}
         </RevelarGrupo>
         <Revelar className="mt-10 text-center">
-          {/* La asesoría gratuita funciona como filtro y diagnóstico antes
-              de vender una clase o plan: el CTA apunta allí. */}
           <Button asChild size="lg" className="rounded-full px-10 font-bold">
             <Link href="/asesoria">Quiero una clase personalizada</Link>
           </Button>
@@ -179,119 +214,134 @@ export default async function Home() {
         </Revelar>
       </section>
 
-      <Newsletter />
-
-      {/* Recursos */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-        <Revelar>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold sm:text-4xl">
-                Recursos para estudiar con más orden
-              </h2>
-              <p className="mt-3 text-muted-foreground">
-                Materiales complementarios de los videos de Tarareando:
-                guías, ejercicios, plantillas y recursos prácticos para
-                organizar mejor tu estudio musical.
-              </p>
-            </div>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-2 font-bold"
-            >
-              <Link href="/recursos">Ver recursos</Link>
-            </Button>
-          </div>
-        </Revelar>
-        <RevelarGrupo className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {RECURSOS.slice(0, 3).map((recurso) => (
-            <RevelarItem key={recurso.titulo}>
-              <div className="h-full rounded-3xl bg-brand-cream p-6">
-                <span className="text-3xl" aria-hidden>
-                  {recurso.icono}
+      {/* Recursos (en preparación) */}
+      <section className="bg-brand-cream">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+          <Revelar>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="max-w-2xl">
+                <span className="inline-block rounded-full bg-brand-orange/10 px-4 py-1.5 text-sm font-bold text-brand-orange">
+                  En preparación
                 </span>
-                <h3 className="mt-3 text-lg font-bold">{recurso.titulo}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">
-                  {recurso.detalle}
+                <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                  Recursos para estudiar con más orden
+                </h2>
+                <p className="mt-3 text-muted-foreground">
+                  Estamos preparando guías, ejercicios, plantillas y
+                  materiales complementarios de los videos de Tarareando para
+                  organizar mejor tu estudio musical.
                 </p>
               </div>
-            </RevelarItem>
-          ))}
-        </RevelarGrupo>
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-2 font-bold"
+              >
+                <Link href="/recursos">Quiero recibir los recursos</Link>
+              </Button>
+            </div>
+          </Revelar>
+          <RevelarGrupo className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {RECURSOS.slice(0, 3).map((recurso) => (
+              <RevelarItem key={recurso.titulo}>
+                <div className="h-full rounded-3xl bg-white p-6 shadow-sm">
+                  <span className="grid size-11 place-items-center rounded-2xl bg-brand-yellow/15">
+                    <recurso.icono
+                      className="size-5 text-brand-orange"
+                      aria-hidden
+                    />
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold">{recurso.titulo}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {recurso.detalle}
+                  </p>
+                </div>
+              </RevelarItem>
+            ))}
+          </RevelarGrupo>
+        </div>
       </section>
 
       {/* Blog */}
       {entradas.length > 0 && (
-        <section className="bg-brand-cream">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
-            <Revelar>
-              <div className="flex flex-wrap items-end justify-between gap-4">
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+          <Revelar>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="max-w-2xl">
                 <h2 className="text-3xl font-bold sm:text-4xl">
                   Últimas entradas del blog
                 </h2>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="rounded-full border-2 font-bold"
-                >
-                  <Link href="/blog">Leer el blog</Link>
-                </Button>
+                <p className="mt-3 text-muted-foreground">
+                  Ideas, guías y explicaciones para entender mejor la música y
+                  ordenar tu estudio.
+                </p>
               </div>
-            </Revelar>
-            <RevelarGrupo className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {entradas.map((entrada) => (
-                <RevelarItem key={entrada.slug} className="h-full">
-                  <Link
-                    href={`/blog/${entrada.slug}`}
-                    className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm transition-shadow hover:shadow-md"
-                  >
-                    {entrada.imagen ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={entrada.imagen}
-                        alt=""
-                        className="aspect-[16/9] w-full object-cover"
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-2 font-bold"
+              >
+                <Link href="/blog">Ver todos los artículos</Link>
+              </Button>
+            </div>
+          </Revelar>
+          <RevelarGrupo className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {entradas.map((entrada) => (
+              <RevelarItem key={entrada.slug} className="h-full">
+                <Link
+                  href={`/blog/${entrada.slug}`}
+                  className="flex h-full flex-col overflow-hidden rounded-3xl border border-brand-ink/10 bg-white transition-shadow hover:shadow-md"
+                >
+                  {entrada.imagen ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={entrada.imagen}
+                      alt=""
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                  ) : (
+                    <div className="grid aspect-[16/9] w-full place-items-center bg-brand-purple/10">
+                      <Music
+                        className="size-10 text-brand-purple/50"
+                        aria-hidden
                       />
-                    ) : (
-                      <div className="grid aspect-[16/9] w-full place-items-center bg-brand-purple/10 text-4xl">
-                        🎵
-                      </div>
-                    )}
-                    <div className="flex flex-1 flex-col p-6">
-                      {entrada.fecha && (
-                        <p className="text-xs font-semibold text-muted-foreground">
-                          {formatoFecha(entrada.fecha)}
-                        </p>
-                      )}
-                      <h3 className="mt-1 text-lg font-bold">
-                        {entrada.titulo}
-                      </h3>
-                      <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                        {entrada.extracto}
-                      </p>
-                      <span className="mt-auto pt-4 text-sm font-bold text-brand-purple">
-                        Leer más →
-                      </span>
                     </div>
-                  </Link>
-                </RevelarItem>
-              ))}
-            </RevelarGrupo>
-          </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    {entrada.fecha && (
+                      <p className="text-xs font-semibold text-muted-foreground">
+                        {formatoFecha(entrada.fecha)}
+                      </p>
+                    )}
+                    <h3 className="mt-1 text-lg font-bold">
+                      {entrada.titulo}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                      {entrada.extracto}
+                    </p>
+                    <span className="mt-auto flex items-center gap-1 pt-4 text-sm font-bold text-brand-purple">
+                      Leer más
+                      <ArrowRight className="size-4" aria-hidden />
+                    </span>
+                  </div>
+                </Link>
+              </RevelarItem>
+            ))}
+          </RevelarGrupo>
         </section>
       )}
 
-      {/* Sobre Tarareando */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-20">
+      {/* Sobre Tarareando + Reconocimientos */}
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 md:pb-20">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <Revelar>
             <h2 className="text-3xl font-bold sm:text-4xl">
               Sobre Tarareando
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Tarareando nació como un proyecto de educación musical para
-              explicar la música de forma clara, cercana y práctica.
+              Tarareando nació en Trujillo como un proyecto de educación
+              musical para explicar la música de forma clara, cercana y
+              práctica.
             </p>
             <p className="mt-3 text-muted-foreground">
               Con el tiempo, el proyecto creció como canal, comunidad y
@@ -299,9 +349,10 @@ export default async function Home() {
               buscan entender mejor lo que hacen y avanzar con más orden.
             </p>
             <p className="mt-3 text-muted-foreground">
-              Hoy Tarareando se enfoca en ayudar a músicos autodidactas y
-              estudiantes de música a construir rutas de aprendizaje más
-              claras, realistas y conectadas con sus objetivos.
+              Actualmente, desde Cajabamba, Tarareando continúa desarrollando
+              recursos, asesorías y espacios de formación para músicos
+              autodidactas y estudiantes de música que quieren construir una
+              ruta de aprendizaje más clara y realista.
             </p>
             <Button
               asChild
@@ -314,7 +365,6 @@ export default async function Home() {
             </Button>
           </Revelar>
 
-          {/* Reconocimientos y trayectoria */}
           <Revelar>
             <div className="rounded-3xl bg-brand-ink p-8 text-white">
               <h3 className="text-xl font-bold text-brand-yellow">
@@ -323,10 +373,15 @@ export default async function Home() {
               <ul className="mt-5 space-y-4">
                 {RECONOCIMIENTOS.map((r) => (
                   <li key={r.texto} className="flex items-start gap-3">
-                    <span className="text-xl" aria-hidden>
-                      {r.icono}
+                    <span className="grid size-8 shrink-0 place-items-center rounded-xl bg-white/10">
+                      <r.icono
+                        className="size-4 text-brand-yellow"
+                        aria-hidden
+                      />
                     </span>
-                    <span className="text-sm text-white/85">{r.texto}</span>
+                    <span className="pt-1 text-sm text-white/85">
+                      {r.texto}
+                    </span>
                   </li>
                 ))}
               </ul>

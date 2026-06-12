@@ -2,47 +2,67 @@
 // Editar aquí los textos de áreas, formatos, recursos, reconocimientos y
 // testimonios sin tocar las páginas.
 
+import {
+  Award,
+  BookOpen,
+  CalendarDays,
+  CalendarRange,
+  Compass,
+  Drum,
+  Ear,
+  GraduationCap,
+  Guitar,
+  Landmark,
+  ListMusic,
+  MonitorPlay,
+  Sparkles,
+  Timer,
+  Trophy,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+
 // --- Método Tarareando: áreas de la formación musical -----------------------
 
 export interface Area {
-  icono: string;
+  icono: LucideIcon;
   titulo: string;
   detalle: string;
 }
 
 export const AREAS: Area[] = [
   {
-    icono: "🎸",
+    icono: Guitar,
     titulo: "Instrumento",
     detalle: "Técnica y práctica con intención, no solo repetir canciones.",
   },
   {
-    icono: "📖",
+    icono: BookOpen,
     titulo: "Lenguaje musical",
     detalle: "Entiende lo que tocas: lectura, armonía y vocabulario musical.",
   },
   {
-    icono: "👂",
+    icono: Ear,
     titulo: "Oído",
     detalle: "Reconoce acordes, melodías e intervalos en la música real.",
   },
   {
-    icono: "🥁",
+    icono: Drum,
     titulo: "Ritmo",
     detalle: "Pulso, subdivisión y metrónomo como aliados, no como castigo.",
   },
   {
-    icono: "🎵",
+    icono: ListMusic,
     titulo: "Repertorio",
     detalle: "Canciones elegidas para tu nivel y tus objetivos.",
   },
   {
-    icono: "✨",
+    icono: Sparkles,
     titulo: "Aplicación creativa",
     detalle: "Lleva lo que estudias a componer, improvisar y crear.",
   },
   {
-    icono: "🗓️",
+    icono: CalendarDays,
     titulo: "Organización del estudio",
     detalle: "Rutinas realistas según el tiempo que de verdad tienes.",
   },
@@ -99,10 +119,12 @@ export const AREAS_CLASES = [
 ];
 
 // --- Recursos: materiales complementarios de los videos ----------------------
-// Cuando un recurso esté listo, agregar su `enlace` (PDF o página de descarga).
+// Todavía en preparación: la página de recursos funciona como página de
+// espera con CTA a la newsletter. Cuando un recurso esté listo, agregar su
+// `enlace` (PDF o página de descarga) y reactivar las cards de descarga.
 
 export interface Recurso {
-  icono: string;
+  icono: LucideIcon;
   titulo: string;
   detalle: string;
   enlace?: string;
@@ -110,34 +132,34 @@ export interface Recurso {
 
 export const RECURSOS: Recurso[] = [
   {
-    icono: "🧭",
+    icono: Compass,
     titulo: "Guía para ordenar tu estudio musical",
     detalle:
       "El punto de partida si estudias por tu cuenta: qué mirar primero y cómo armar tu ruta.",
   },
   {
-    icono: "📅",
+    icono: CalendarRange,
     titulo: "Plantilla de rutina semanal de práctica",
     detalle:
       "Organiza tus sesiones de estudio según el tiempo real que tienes.",
   },
   {
-    icono: "🥁",
+    icono: Drum,
     titulo: "Ejercicios de ritmo",
     detalle: "Secuencias progresivas para afinar tu pulso y subdivisión.",
   },
   {
-    icono: "⏱️",
+    icono: Timer,
     titulo: "Ejercicios de metrónomo",
     detalle: "Rutinas para que el metrónomo trabaje a tu favor.",
   },
   {
-    icono: "📖",
+    icono: BookOpen,
     titulo: "Guías básicas de teoría musical",
     detalle: "Material claro para entender lo que tocas y escuchas.",
   },
   {
-    icono: "▶️",
+    icono: MonitorPlay,
     titulo: "Material complementario de YouTube",
     detalle: "Los recursos mencionados en los videos de Tarareando.",
   },
@@ -145,25 +167,30 @@ export const RECURSOS: Recurso[] = [
 
 // --- Reconocimientos y trayectoria -------------------------------------------
 
-export const RECONOCIMIENTOS = [
+export interface Reconocimiento {
+  icono: LucideIcon;
+  texto: string;
+}
+
+export const RECONOCIMIENTOS: Reconocimiento[] = [
   {
-    icono: "🏛️",
+    icono: Landmark,
     texto: "Proyecto financiado por el Ministerio de Cultura",
   },
   {
-    icono: "🏆",
+    icono: Trophy,
     texto: "Ganador de “Creadores de un Perú que da Gusto” de Inca Kola",
   },
   {
-    icono: "🎖️",
+    icono: Award,
     texto: "Finalista de “Protagonistas del Cambio” de la UPC",
   },
   {
-    icono: "🎓",
+    icono: GraduationCap,
     texto: "Más de 1000 músicos independientes capacitados",
   },
   {
-    icono: "📺",
+    icono: Users,
     texto: "Comunidad construida desde YouTube y espacios de formación musical",
   },
 ];
